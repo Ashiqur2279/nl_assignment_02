@@ -1,11 +1,9 @@
---table rangers--------------------
 CREATE TABLE rangers (
     ranger_id serial PRIMARY KEY,
     name VARCHAR(100) not NULL,
     region VARCHAR(75) not NULL
 );
 
---------------------
 INSERT INTO
     rangers (name, region)
 VALUES (
@@ -18,7 +16,6 @@ VALUES (
         'Mountain Range'
     );
 
---table species -----------------------------
 CREATE TABLE species (
     species_id serial PRIMARY KEY,
     common_name VARCHAR(75) NOT nULL,
@@ -59,7 +56,6 @@ VALUES (
         'Endangered'
     );
 
------------table sightings---------------------------
 CREATE TABLE sightings (
     sighting_id serial PRIMARY KEY,
     species_id INTEGER REFERENCES species (species_id),
@@ -110,8 +106,6 @@ VALUES (
 INSERT INTO
     rangers ("name", region)
 VALUES ('Derek Fox', 'Coastal Plains');
-
-SELECT * FROM rangers;
 
 --problem 02
 SELECT count(DISTINCT species_id) as unique_species_count
