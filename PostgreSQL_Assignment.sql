@@ -171,3 +171,14 @@ select
         else 'Evening'
     end as time_of_day
 from sightings;
+
+--problem 09:
+DELETE FROM rangers as r USING (
+    SELECT r.ranger_id
+    from rangers as r
+        LEFT join sightings as si on r.ranger_id = si.ranger_id
+    WHERE
+        si.ranger_id is null
+) as to_delete_ranger
+WHERE
+    r.ranger_id = to_delete_ranger.ranger_id;
